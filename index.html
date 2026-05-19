@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sellers · Embalagem Compensada · Mercado Livre × Polen</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --yellow: #FFE600;
+    --yellow-dk: #E6CF00;
+    --blue: #2D73F5;
+    --blue-dk: #1A56C4;
+    --blue-lt: #EBF2FF;
+    --green: #00A650;
+    --green-lt: #E6F7EF;
+    --green-dk: #006B33;
+    --text: #1A1A1A;
+    --muted: #666;
+    --bg: #F4F4F2;
+    --white: #FFFFFF;
+    --border: #E0E0DC;
+    --radius: 10px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+
+
+  /* ─── NAV ─── */
+  nav {
+    background: var(--yellow);
+    padding: 0 48px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid rgba(0,0,0,0.06);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; }
+
+
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--text);
+    padding: 64px 48px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 48px;
+    align-items: end;
+  }
+  .hero-content { padding-bottom: 56px; }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--yellow);
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 44px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+  .hero h1 em { color: var(--yellow); font-style: normal; }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+    max-width: 500px;
+    margin-bottom: 32px;
+  }
+  .hero-stats { display: flex; gap: 32px; flex-wrap: wrap; }
+  .hero-stat .n {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--yellow);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hero-stat .l { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.3; }
+
+  /* Hero card */
+  .hero-card {
+    background: white;
+    border-radius: var(--radius) var(--radius) 0 0;
+    padding: 28px 24px;
+    align-self: end;
+  }
+  .hero-card-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .hero-card-sub { font-size: 12px; color: var(--muted); margin-bottom: 18px; line-height: 1.4; }
+  .path-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+  .path-btn {
+    padding: 12px 10px;
+    border-radius: 8px;
+    border: 2px solid var(--border);
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    background: white;
+    color: var(--muted);
+    transition: all 0.15s;
+    line-height: 1.3;
+  }
+  .path-btn .ico { font-size: 20px; display: block; margin-bottom: 5px; }
+  .path-btn.sel-green { border-color: var(--green); color: var(--green-dk); background: var(--green-lt); }
+  .path-btn.sel-blue { border-color: var(--blue); color: var(--blue-dk); background: var(--blue-lt); }
+  .hero-cta {
+    width: 100%;
+    background: var(--yellow);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .hero-cta:hover { background: var(--yellow-dk); }
+
+  /* ─── COMO FUNCIONA ─── */
+  .paths-section {
+    background: white;
+    padding: 64px 48px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .paths-inner { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+  .section-title-big {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 36px;
+  }
+  .paths-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .path-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: box-shadow 0.18s, transform 0.15s;
+  }
+  .path-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .path-header { padding: 24px; display: flex; gap: 14px; align-items: flex-start; }
+  .path-header.green { background: var(--green-lt); border-bottom: 1px solid #BEE8D0; }
+  .path-header.blue { background: var(--blue-lt); border-bottom: 1px solid #BDD0FA; }
+  .path-hico {
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .path-hico.green { background: var(--green); }
+  .path-hico.blue { background: var(--blue); }
+  .path-htxt h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .path-htxt h3.green { color: var(--green-dk); }
+  .path-htxt h3.blue { color: var(--blue-dk); }
+  .path-htxt p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .path-body { padding: 24px; }
+  .path-steps { display: flex; flex-direction: column; gap: 18px; }
+  .path-step { display: flex; gap: 12px; }
+  .step-num {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .step-num.green { background: var(--green); color: white; }
+  .step-num.blue { background: var(--blue); color: white; }
+  .step-txt strong {
+    font-size: 13px; font-weight: 700;
+    display: block; margin-bottom: 3px; color: var(--text);
+  }
+  .step-txt span { font-size: 12px; color: var(--muted); line-height: 1.55; }
+  .step-txt .materials {
+    display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px;
+  }
+  .mat-tag {
+    background: #F0F4FA;
+    border: 1px solid #D0DCF5;
+    color: var(--blue-dk);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 12px;
+  }
+
+  /* ─── ONDE ESTAMOS ─── */
+  .hubs-section {
+    background: var(--bg);
+    padding: 64px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hubs-inner { max-width: 1100px; margin: 0 auto; }
+  .section-title { font-size: 26px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .section-desc { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 580px; margin-bottom: 32px; }
+  .hubs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .map-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .map-visual {
+    background: #D4E5F5;
+    min-height: 240px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .map-ph-content { text-align: center; }
+  .map-ph-content .ico { font-size: 36px; opacity: 0.25; display: block; margin-bottom: 10px; }
+  .map-ph-content p { font-size: 13px; font-weight: 700; color: var(--blue); opacity: 0.55; }
+  .map-ph-content small { font-size: 11px; color: var(--muted); opacity: 0.65; display: block; margin-top: 4px; }
+  .map-footer { padding: 12px 16px; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); }
+  .hubs-list { display: flex; flex-direction: column; gap: 8px; }
+  .hub-item {
+    display: flex; align-items: center; gap: 10px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: border-color 0.12s, background 0.12s;
+  }
+  .hub-item:hover { border-color: var(--green); background: var(--green-lt); }
+  .hub-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .hub-dot.active { background: var(--green); }
+  .hub-dot.soon { background: #F0B90B; }
+  .hub-info { flex: 1; }
+  .hub-city { font-size: 14px; font-weight: 700; color: var(--text); }
+  .hub-state { font-size: 11px; color: var(--muted); }
+  .hub-badge {
+    font-size: 10px; font-weight: 700;
+    padding: 3px 9px; border-radius: 10px; flex-shrink: 0;
+  }
+  .hub-badge.active { background: var(--green-lt); color: var(--green-dk); }
+  .hub-badge.soon { background: #FFF8E6; color: #7A5500; }
+
+  /* ─── FORM ─── */
+  .form-section {
+    background: white;
+    padding: 64px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .form-inner { max-width: 1100px; margin: 0 auto; }
+  .form-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .form-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .form-card > p { font-size: 13px; color: var(--muted); margin-bottom: 28px; line-height: 1.5; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-row.full { grid-template-columns: 1fr; }
+  .form-group { display: flex; flex-direction: column; gap: 5px; }
+  .form-group label {
+    font-size: 10px; font-weight: 700;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px;
+  }
+  .form-group input, .form-group select {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+    color: var(--text);
+    background: white;
+    outline: none;
+    transition: border-color 0.12s;
+    appearance: none;
+  }
+  .form-group input:focus, .form-group select:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(45,115,245,0.1);
+  }
+  .path-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .path-option {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px; font-weight: 700;
+    color: var(--muted);
+    transition: all 0.14s;
+  }
+  .path-option input { display: none; }
+  .path-option.sel-green { border-color: var(--green); color: var(--green-dk); background: var(--green-lt); }
+  .path-option.sel-blue { border-color: var(--blue); color: var(--blue-dk); background: var(--blue-lt); }
+  .form-submit {
+    width: 100%;
+    background: var(--yellow);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    font-size: 15px; font-weight: 700;
+    padding: 14px; border: none;
+    border-radius: 8px; cursor: pointer;
+    transition: background 0.15s;
+    margin-top: 4px;
+  }
+  .form-submit:hover { background: var(--yellow-dk); }
+  .form-privacy { text-align: center; font-size: 11px; color: var(--muted); margin-top: 12px; line-height: 1.4; }
+
+  /* ─── CTA CONSUMIDOR ─── */
+  .consumer-cta {
+    background: var(--blue);
+    padding: 48px;
+  }
+  .consumer-cta-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 32px;
+  }
+  .consumer-cta h2 { font-size: 24px; font-weight: 700; color: white; margin-bottom: 6px; }
+  .consumer-cta p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.5; max-width: 440px; }
+  .consumer-btn {
+    background: var(--yellow); color: var(--text);
+    font-family: Arial, sans-serif;
+    font-size: 14px; font-weight: 700;
+    padding: 13px 28px; border: none;
+    border-radius: 8px; cursor: pointer;
+    white-space: nowrap; flex-shrink: 0;
+    transition: background 0.15s;
+  }
+  .consumer-btn:hover { background: var(--yellow-dk); }
+
+  /* ─── SIMULADOR ─── */
+  .simulator-section {
+    background: white;
+    padding: 64px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .simulator-inner { max-width: 1100px; margin: 0 auto; }
+  .simulator-desc {
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0 auto 36px;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+  .simulator-card {
+    background: var(--green-lt);
+    border: 1px solid #BEE8D0;
+    border-radius: var(--radius);
+    padding: 40px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .sim-slider-wrap { margin-bottom: 28px; }
+  .sim-slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 10px;
+  }
+  .sim-volume-display {
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 14px;
+    font-weight: 600;
+  }
+  .sim-volume-display #sim-volume-value {
+    color: var(--green-dk);
+    font-size: 20px;
+    font-weight: 700;
+  }
+  input[type="range"]#sim-volume {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: white;
+    border: 1px solid #BEE8D0;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+  }
+  input[type="range"]#sim-volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--green);
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0,166,80,0.35);
+  }
+  input[type="range"]#sim-volume::-moz-range-thumb {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--green);
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0,166,80,0.35);
+  }
+  .sim-main-value {
+    background: white;
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    text-align: center;
+    margin-bottom: 18px;
+    border: 1px solid #BEE8D0;
+  }
+  .sim-main-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .sim-currency {
+    display: inline-block;
+    font-size: 20px;
+    color: var(--green-dk);
+    vertical-align: top;
+    margin-top: 14px;
+    font-weight: 700;
+  }
+  .sim-amount {
+    display: inline-block;
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--green-dk);
+    line-height: 1;
+    letter-spacing: -1.5px;
+    margin: 0 4px;
+  }
+  .sim-period { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .sim-projections {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .sim-proj {
+    background: white;
+    border: 1px solid #BEE8D0;
+    border-radius: 8px;
+    padding: 14px 10px;
+    text-align: center;
+  }
+  .sim-proj.highlight {
+    background: var(--green);
+    border-color: var(--green);
+  }
+  .sim-proj.highlight .sim-proj-label,
+  .sim-proj.highlight .sim-proj-value { color: white; }
+  .sim-proj-label {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .sim-proj-value {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--green-dk);
+  }
+  .sim-message {
+    background: white;
+    border: 1px dashed var(--green);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+  .sim-message strong { color: var(--green-dk); }
+  .sim-cta {
+    width: 100%;
+    background: var(--yellow);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .sim-cta:hover { background: var(--yellow-dk); }
+  .sim-footnote {
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+  .sim-footnote strong { color: var(--text); }
+  .sim-delivery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .sim-delivery-opt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border: 2px solid #BEE8D0;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    transition: all 0.15s;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .sim-delivery-opt:hover { border-color: var(--green); color: var(--green-dk); }
+  .sim-delivery-opt.active {
+    border-color: var(--green);
+    background: var(--green);
+    color: white;
+  }
+  .sim-delivery-opt .ico { font-size: 16px; }
+  .sim-breakdown {
+    font-size: 12px;
+    text-align: center;
+    margin-top: -8px;
+    margin-bottom: 22px;
+    line-height: 1.6;
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 6px;
+    color: var(--muted);
+  }
+  .sim-breakdown .freight { color: #B71C1C; font-weight: 600; }
+  .sim-breakdown .net { color: var(--green-dk); font-weight: 700; }
+  .sim-breakdown.galpao { color: var(--green-dk); font-weight: 600; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .hero { padding: 40px 24px 0; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-card { border-radius: var(--radius); margin-top: 32px; }
+    .hero h1 { font-size: 32px; }
+    .paths-section, .hubs-section, .form-section, .simulator-section { padding: 48px 24px; }
+    .consumer-cta, footer { padding: 40px 24px; }
+    .paths-grid, .hubs-grid { grid-template-columns: 1fr; }
+    .consumer-cta-inner { flex-direction: column; align-items: flex-start; }
+    .simulator-card { padding: 24px; }
+    .sim-amount { font-size: 42px; }
+    .sim-currency { font-size: 16px; margin-top: 10px; }
+    .sim-projections { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <img src="data:image/png;base64,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" alt="Mercado Livre" style="height:40px;width:auto;">
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🛍️ Para vendedores do Mercado Livre</div>
+      <h1>Suas embalagens também podem se tornar <em>renda.</em></h1>
+      <p class="hero-sub">650.000 empresas vendem pelo Mercado Livre. Agora todas podem compensar suas embalagens ou vender seus resíduos — sem burocracia e com rastreabilidade total.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="n">10</div>
+          <div class="l">regiões com pontos de coleta</div>
+        </div>
+        <div class="hero-stat">
+          <div class="n">+120</div>
+          <div class="l">cooperativas<br>homologadas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO CARD -->
+    <div class="hero-card">
+      <div class="hero-card-title">O que você quer fazer?</div>
+      <div class="hero-card-sub">Escolha seu caminho e cadastre-se em menos de 3 minutos.</div>
+      <div class="path-toggle">
+        <div class="path-btn sel-green" id="btn-vender" onclick="selectHeroPath('vender')">
+          <span class="ico">💰</span>
+          Vender meus resíduos
+        </div>
+        <div class="path-btn" id="btn-compensar" onclick="selectHeroPath('compensar')">
+          <span class="ico">🌱</span>
+          Compensar embalagens
+        </div>
+      </div>
+      <button class="hero-cta" onclick="document.getElementById('cadastro').scrollIntoView({behavior:'smooth'})">
+        Quero me cadastrar →
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="paths-section">
+  <div class="paths-inner">
+    <div class="section-eyebrow">Como funciona</div>
+    <div class="section-title-big">Escolha o caminho que faz sentido para o seu negócio</div>
+    <div class="paths-grid">
+
+      <!-- CAMINHO 1: VENDER -->
+      <div class="path-card">
+        <div class="path-header green">
+          <div class="path-hico green">💰</div>
+          <div class="path-htxt">
+            <h3 class="green">Vender resíduos</h3>
+            <p>Você tem embalagens acumuladas e quer transformar em receita. Nós coletamos, pesamos e pagamos diretamente — sem intermediários.</p>
+          </div>
+        </div>
+        <div class="path-body">
+          <div class="path-steps">
+            <div class="path-step">
+              <div class="step-num green">1</div>
+              <div class="step-txt">
+                <strong>Separe seu resíduo</strong>
+                <span>Aceitamos:</span>
+                <div class="materials">
+                  <span class="mat-tag">Polietileno de Baixa Densidade (PEBD)</span>
+                  <span class="mat-tag">Filme canela</span>
+                  <span class="mat-tag">Stretch</span>
+                  <span class="mat-tag">Plástico bolha</span>
+                </div>
+              </div>
+            </div>
+            <div class="path-step">
+              <div class="step-num green">2</div>
+              <div class="step-txt">
+                <strong>Agende uma coleta ou leve ao nosso Hub</strong>
+                <span>Verifique o Hub mais próximo para entregar o material ou preencha o formulário abaixo para saber mais sobre as condições para coleta.</span>
+              </div>
+            </div>
+            <div class="path-step">
+              <div class="step-num green">3</div>
+              <div class="step-txt">
+                <strong>Recebimento, pesagem e pagamento</strong>
+                <span>Pesamos o seu material no momento do recebimento e alinhamos o pagamento após o envio de nota fiscal.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAMINHO 2: COMPENSAR -->
+      <div class="path-card">
+        <div class="path-header blue">
+          <div class="path-hico blue">🌱</div>
+          <div class="path-htxt">
+            <h3 class="blue">Compense suas embalagens</h3>
+            <p>Você quer cumprir com a PNRS, garantindo impacto socioambiental? Garanta sua compensação de embalagens colocadas no mercado.</p>
+          </div>
+        </div>
+        <div class="path-body">
+          <div class="path-steps">
+            <div class="path-step">
+              <div class="step-num blue">1</div>
+              <div class="step-txt">
+                <strong>Declare seu volume</strong>
+                <span>A Polen te ajuda a calcular a tonelagem de embalagens colocadas no mercado e orientamos como compensar conforme seu perfil.</span>
+              </div>
+            </div>
+            <div class="path-step">
+              <div class="step-num blue">2</div>
+              <div class="step-txt">
+                <strong>Compensação via rede Polen</strong>
+                <span>A sua demanda é compensada através da compra de créditos da nossa rede de cooperativas homologadas, com rastreabilidade e transparência, além da garantia de compliance de órgãos estaduais e federal.</span>
+              </div>
+            </div>
+            <div class="path-step">
+              <div class="step-num blue">3</div>
+              <div class="step-txt">
+                <strong>Selo Polen</strong>
+                <span>Você recebe o selo Polen para comunicar sobre sua compensação e tem dados do impacto socioambiental para trabalhar nas suas redes sociais.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SIMULADOR DE GANHOS -->
+<section class="simulator-section">
+  <div class="simulator-inner">
+    <div class="section-eyebrow" style="text-align:center;">Simulador de ganhos</div>
+    <div class="section-title-big" style="text-align:center; margin-bottom: 8px;">Quanto suas embalagens podem render?</div>
+    <p class="simulator-desc">Ajuste o volume mensal e veja o potencial de receita ao longo do tempo. Quanto mais você acumula, mais você arrecada.</p>
+
+    <div class="simulator-card">
+      <div class="sim-slider-wrap">
+        <div class="sim-slider-labels">
+          <span>10 kg</span>
+          <span>Volume mensal estimado</span>
+          <span>500 kg</span>
+        </div>
+        <input type="range" id="sim-volume" min="10" max="500" step="5" value="90" oninput="updateSimulator(this.value)">
+        <div class="sim-volume-display">
+          <span id="sim-volume-value">90</span> kg/mês
+        </div>
+      </div>
+
+      <div class="sim-delivery">
+        <div class="sim-delivery-opt active" id="del-galpao" onclick="selectDelivery('galpao')">
+          <span class="ico">🏭</span> Entrego no galpão
+        </div>
+        <div class="sim-delivery-opt" id="del-coleta" onclick="selectDelivery('coleta')">
+          <span class="ico">🚛</span> Polen coleta
+        </div>
+      </div>
+
+      <div class="sim-main-value">
+        <div class="sim-main-label">Você arrecada por mês</div>
+        <div>
+          <span class="sim-currency">R$</span><span class="sim-amount" id="sim-monthly">90,00</span>
+        </div>
+        <div class="sim-period">com 90 kg de filme plástico</div>
+      </div>
+
+      <div class="sim-breakdown galpao" id="sim-breakdown">
+        ✓ Sem frete — você recebe o valor cheio
+      </div>
+
+      <div class="sim-projections">
+        <div class="sim-proj">
+          <div class="sim-proj-label">em 3 meses</div>
+          <div class="sim-proj-value">R$ <span id="sim-3m">270,00</span></div>
+        </div>
+        <div class="sim-proj">
+          <div class="sim-proj-label">em 6 meses</div>
+          <div class="sim-proj-value">R$ <span id="sim-6m">540,00</span></div>
+        </div>
+        <div class="sim-proj highlight">
+          <div class="sim-proj-label">em 1 ano</div>
+          <div class="sim-proj-value">R$ <span id="sim-12m">1.080,00</span></div>
+        </div>
+      </div>
+
+      <div class="sim-message">
+        💡 Acumulando <strong><span id="sim-msg-volume">90 kg</span>/mês</strong> ao longo de 1 ano, você arrecada <strong>R$ <span id="sim-msg-yearly">1.080,00</span></strong> só com o que normalmente iria pro lixo da operação.
+      </div>
+
+      <button class="sim-cta" onclick="document.getElementById('cadastro').scrollIntoView({behavior:'smooth'})">
+        Quero começar a vender meus resíduos →
+      </button>
+
+      <p class="sim-footnote">Preço referência: <strong>R$ 1,00/kg</strong> em Porto Alegre (abril/2026) com entrega no galpão. Frete subtraído quando a Polen faz a coleta (estimativa preliminar). Tabela de preços completa por região e tipo de material será enviada após o cadastro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ONDE ESTAMOS -->
+<section class="hubs-section">
+  <div class="hubs-inner">
+    <div class="section-eyebrow">Onde estamos</div>
+    <div class="section-title">Nossas operações</div>
+    <div class="section-desc">Operamos em 6 cidades e outras 4 operações estão por vir este ano.</div>
+    <div class="hubs-grid">
+      <div class="map-box">
+        <div class="map-visual">
+          <div class="map-ph-content">
+            <span class="ico">🗺</span>
+            <p>Mapa de operações Polen</p>
+            <small>6 cidades ativas · 4 em expansão</small>
+          </div>
+        </div>
+        <div class="map-footer">
+          Presença em <strong style="color:var(--green);">6 cidades</strong> — outras 4 em breve
+        </div>
+      </div>
+      <div class="hubs-list">
+        <div class="hub-item">
+          <div class="hub-dot active"></div>
+          <div class="hub-info">
+            <div class="hub-city">Porto Alegre</div>
+            <div class="hub-state">RS</div>
+          </div>
+          <span class="hub-badge active">Ativo</span>
+        </div>
+        <div class="hub-item">
+          <div class="hub-dot active"></div>
+          <div class="hub-info">
+            <div class="hub-city">São Paulo</div>
+            <div class="hub-state">SP</div>
+          </div>
+          <span class="hub-badge active">Ativo</span>
+        </div>
+        <div class="hub-item">
+          <div class="hub-dot active"></div>
+          <div class="hub-info">
+            <div class="hub-city">Rio de Janeiro</div>
+            <div class="hub-state">RJ</div>
+          </div>
+          <span class="hub-badge active">Ativo</span>
+        </div>
+        <div class="hub-item">
+          <div class="hub-dot active"></div>
+          <div class="hub-info">
+            <div class="hub-city">Betim</div>
+            <div class="hub-state">MG</div>
+          </div>
+          <span class="hub-badge active">Ativo</span>
+        </div>
+        <div class="hub-item">
+          <div class="hub-dot active"></div>
+          <div class="hub-info">
+            <div class="hub-city">Salvador</div>
+            <div class="hub-state">BA</div>
+          </div>
+          <span class="hub-badge active">Ativo</span>
+        </div>
+        <div class="hub-item">
+          <div class="hub-dot active"></div>
+          <div class="hub-info">
+            <div class="hub-city">Tijucas</div>
+            <div class="hub-state">SC</div>
+          </div>
+          <span class="hub-badge active">Ativo</span>
+        </div>
+        <div class="hub-item">
+          <div class="hub-dot soon"></div>
+          <div class="hub-info">
+            <div class="hub-city">+ 4 cidades</div>
+            <div class="hub-state">Expansão prevista para 2025</div>
+          </div>
+          <span class="hub-badge soon">Em breve</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO DE CADASTRO -->
+<section class="form-section" id="cadastro">
+  <div class="form-inner">
+    <div class="section-eyebrow" style="text-align:center;">Cadastro</div>
+    <div class="section-title" style="text-align:center; margin-bottom: 32px;">Quero participar do programa</div>
+    <div class="form-card">
+      <h3>Seus dados</h3>
+      <p>Preencha abaixo. Nossa equipe entra em contato em até 1 dia útil.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nome da loja / empresa</label>
+          <input type="text" placeholder="ex: Loja do João LTDA">
+        </div>
+        <div class="form-group">
+          <label>CNPJ</label>
+          <input type="text" placeholder="00.000.000/0001-00">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Cidade</label>
+          <select>
+            <option value="">Selecione sua cidade</option>
+            <option>Porto Alegre (RS)</option>
+            <option>São Paulo (SP)</option>
+            <option>Rio de Janeiro (RJ)</option>
+            <option>Betim (MG)</option>
+            <option>Salvador (BA)</option>
+            <option>Tijucas (SC)</option>
+            <option>Outra cidade</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Volume mensal estimado</label>
+          <select>
+            <option>Menos de 10 kg</option>
+            <option>10 a 50 kg</option>
+            <option>50 a 200 kg</option>
+            <option>200 a 500 kg</option>
+            <option>Mais de 500 kg</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="form-group">
+          <label>O que você quer fazer?</label>
+          <div class="path-options">
+            <label class="path-option sel-green" id="opt-vender" onclick="selectFormPath('vender')">
+              <input type="radio" name="path" value="vender" checked>
+              💰 Vender resíduos
+            </label>
+            <label class="path-option" id="opt-compensar" onclick="selectFormPath('compensar')">
+              <input type="radio" name="path" value="compensar">
+              🌱 Compensar embalagens
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="form-group">
+          <label>Observações (opcional)</label>
+          <input type="text" placeholder="Ex: tenho sacolas plásticas e stretch acumulados...">
+        </div>
+      </div>
+      <button class="form-submit" onclick="alert('Cadastro enviado! Nossa equipe entrará em contato.')">
+        Enviar cadastro →
+      </button>
+      <div class="form-privacy">🔒 Seus dados são utilizados exclusivamente para contato sobre o programa Polen.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA CONSUMIDOR -->
+<section class="consumer-cta">
+  <div class="consumer-cta-inner">
+    <div>
+      <h2>Você é consumidor, não vendedor?</h2>
+      <p>Veja o que acontece com as embalagens que chegam na sua casa e quais cooperativas estão ativas na sua região.</p>
+    </div>
+    <button class="consumer-btn" onclick="window.location.href='lp-consumidor-ml-polen.html'">
+      Ver impacto por estado →
+    </button>
+  </div>
+</section>
+
+<script>
+  function selectHeroPath(p) {
+    document.getElementById('btn-vender').className = 'path-btn' + (p === 'vender' ? ' sel-green' : '');
+    document.getElementById('btn-compensar').className = 'path-btn' + (p === 'compensar' ? ' sel-blue' : '');
+  }
+  function selectFormPath(p) {
+    document.getElementById('opt-vender').className = 'path-option' + (p === 'vender' ? ' sel-green' : '');
+    document.getElementById('opt-compensar').className = 'path-option' + (p === 'compensar' ? ' sel-blue' : '');
+  }
+
+  const PRICE_PER_KG = 1.00;      // Porto Alegre, abril/2026, entrega no galpão
+  const FREIGHT_PER_KG = 0.15;    // estimativa preliminar quando Polen faz a coleta
+  let DELIVERY = 'galpao';
+
+  function formatBRL(value) {
+    return value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function selectDelivery(d) {
+    DELIVERY = d;
+    document.getElementById('del-galpao').className = 'sim-delivery-opt' + (d === 'galpao' ? ' active' : '');
+    document.getElementById('del-coleta').className = 'sim-delivery-opt' + (d === 'coleta' ? ' active' : '');
+    updateSimulator(document.getElementById('sim-volume').value);
+  }
+
+  function updateSimulator(volume) {
+    const v = Number(volume);
+    const gross = v * PRICE_PER_KG;
+    const freight = DELIVERY === 'coleta' ? v * FREIGHT_PER_KG : 0;
+    const monthly = gross - freight;
+
+    document.getElementById('sim-volume-value').textContent = v;
+    document.getElementById('sim-monthly').textContent = formatBRL(monthly);
+    document.getElementById('sim-3m').textContent = formatBRL(monthly * 3);
+    document.getElementById('sim-6m').textContent = formatBRL(monthly * 6);
+    document.getElementById('sim-12m').textContent = formatBRL(monthly * 12);
+    document.getElementById('sim-msg-volume').textContent = v + ' kg';
+    document.getElementById('sim-msg-yearly').textContent = formatBRL(monthly * 12);
+
+    const period = document.querySelector('.sim-period');
+    if (period) period.textContent = 'com ' + v + ' kg de filme plástico';
+
+    const breakdown = document.getElementById('sim-breakdown');
+    if (DELIVERY === 'coleta') {
+      breakdown.className = 'sim-breakdown';
+      breakdown.innerHTML =
+        'R$ ' + formatBRL(gross) + ' material ' +
+        '<span class="freight">− R$ ' + formatBRL(freight) + ' frete estimado</span> ' +
+        '= <span class="net">R$ ' + formatBRL(monthly) + '</span>';
+    } else {
+      breakdown.className = 'sim-breakdown galpao';
+      breakdown.innerHTML = '✓ Sem frete — você recebe o valor cheio';
+    }
+  }
+</script>
+
+</body>
+</html>
