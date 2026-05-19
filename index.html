@@ -385,139 +385,430 @@
     line-height: 1.6;
   }
   .simulator-card {
-    background: var(--green-lt);
-    border: 1px solid #BEE8D0;
+    background: var(--bg);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 40px;
-    max-width: 720px;
+    padding: 32px 36px;
+    max-width: 680px;
     margin: 0 auto;
   }
-  .sim-slider-wrap { margin-bottom: 28px; }
-  .sim-slider-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 10px;
+
+  /* Steps */
+  .step { margin-bottom: 26px; }
+  .step:last-of-type { margin-bottom: 0; }
+  .step + .step {
+    border-top: 1px solid var(--border);
+    padding-top: 26px;
   }
-  .sim-volume-display {
-    text-align: center;
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 14px;
-    font-weight: 600;
-  }
-  .sim-volume-display #sim-volume-value {
-    color: var(--green-dk);
-    font-size: 20px;
-    font-weight: 700;
-  }
-  input[type="range"]#sim-volume {
-    width: 100%;
-    height: 6px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: white;
-    border: 1px solid #BEE8D0;
-    border-radius: 3px;
-    outline: none;
-    cursor: pointer;
-  }
-  input[type="range"]#sim-volume::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    background: var(--green);
-    cursor: pointer;
-    border: 3px solid white;
-    box-shadow: 0 2px 8px rgba(0,166,80,0.35);
-  }
-  input[type="range"]#sim-volume::-moz-range-thumb {
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    background: var(--green);
-    cursor: pointer;
-    border: 3px solid white;
-    box-shadow: 0 2px 8px rgba(0,166,80,0.35);
-  }
-  .sim-main-value {
-    background: white;
-    border-radius: var(--radius);
-    padding: 28px 24px;
-    text-align: center;
-    margin-bottom: 18px;
-    border: 1px solid #BEE8D0;
-  }
-  .sim-main-label {
+  .step-label {
     font-size: 11px;
     font-weight: 700;
-    color: var(--muted);
+    color: var(--text);
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--green);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* Material selector cards (Step 1) */
+  .mat-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  .mat-card {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 14px 16px 40px;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s, background 0.15s;
+    position: relative;
+    user-select: none;
+  }
+  .mat-card:hover {
+    border-color: var(--green);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,166,80,0.14);
+  }
+  .mat-card.selected {
+    border-color: var(--green);
+    background: var(--green-lt);
+  }
+  .mat-card.selected:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0,166,80,0.16);
+  }
+
+  /* Checkbox top-left */
+  .mat-checkbox {
+    position: absolute;
+    top: 16px;
+    left: 14px;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    background: white;
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .mat-card:hover .mat-checkbox { border-color: var(--green); }
+  .mat-card.selected .mat-checkbox {
+    background: var(--green);
+    border-color: var(--green);
+  }
+  .mat-checkbox-check {
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.15s, transform 0.15s;
+    line-height: 1;
+  }
+  .mat-card.selected .mat-checkbox-check {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .mat-card-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .mat-card-info {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--border);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: Georgia, serif;
+    font-style: italic;
+    cursor: pointer;
+    transition: background 0.15s;
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .mat-card-info:hover { background: var(--green); }
+  .mat-card-desc {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
     margin-bottom: 10px;
   }
-  .sim-currency {
-    display: inline-block;
-    font-size: 20px;
-    color: var(--green-dk);
-    vertical-align: top;
-    margin-top: 14px;
+  .mat-card-price {
+    font-size: 13px;
     font-weight: 700;
+    color: var(--green-dk);
   }
-  .sim-amount {
-    display: inline-block;
-    font-size: 56px;
+  .mat-card-price .unit { font-size: 10px; color: var(--muted); font-weight: 600; }
+  .mat-card-price .est { color: var(--muted); margin-left: 2px; }
+
+  /* Popover */
+  .mat-popover {
+    position: absolute;
+    bottom: calc(100% + 14px);
+    left: 0;
+    width: 320px;
+    max-width: calc(100vw - 80px);
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+    z-index: 20;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: left;
+    display: none;
+    cursor: default;
+  }
+  /* Card mais à direita: popover estende pra esquerda */
+  .mat-card[data-mat="papel"] .mat-popover {
+    left: auto;
+    right: 0;
+  }
+  .mat-card[data-mat="papel"] .mat-popover::after {
+    left: auto;
+    right: 20px;
+  }
+  .mat-card[data-mat="papel"] .mat-popover::before {
+    left: auto;
+    right: 19px;
+  }
+  .mat-popover.open { display: block; }
+  .mat-popover::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+  }
+  .mat-popover::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 19px;
+    width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 9px solid var(--border);
+  }
+  .mat-popover h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+    padding-right: 24px;
+  }
+  .mat-popover .pop-row { margin-bottom: 8px; }
+  .mat-popover .pop-row:last-child { margin-bottom: 0; }
+  .mat-popover .pop-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--green-dk);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .mat-popover .pop-text { color: var(--muted); }
+  .mat-popover-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--muted);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.15s, color 0.15s;
+    line-height: 1;
+  }
+  .mat-popover-close:hover { background: var(--text); color: white; }
+
+  /* Step hint */
+  .step-hint {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: -6px;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  /* Volume rows (Step 2) */
+  .mat-list {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0 18px;
+  }
+  .mat-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 16px;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .mat-row + .mat-row { /* no extra */ }
+  .mat-row:last-of-type { border-bottom: none; }
+  .mat-row.hidden { display: none; }
+  .mat-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .mat-desc {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  .mat-input {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    padding: 2px;
+    transition: border-color 0.15s;
+  }
+  .mat-input:focus-within { border-color: var(--green); }
+  .mat-input input {
+    border: none;
+    outline: none;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--green-dk);
+    width: 55px;
+    text-align: right;
+    padding: 7px 4px;
+    background: transparent;
+  }
+  .mat-input input::-webkit-outer-spin-button,
+  .mat-input input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .mat-input input[type=number] { -moz-appearance: textfield; }
+  .mat-input > span {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 600;
+    padding-right: 8px;
+    padding-left: 4px;
+  }
+  .mat-subtotal {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--green-dk);
+    text-align: right;
+    white-space: nowrap;
+    min-width: 80px;
+  }
+  .empty-volumes {
+    text-align: center;
+    padding: 22px 0;
+    color: var(--muted);
+    font-size: 12px;
+    font-style: italic;
+  }
+  .empty-volumes.hidden { display: none; }
+
+  /* Totals (Step 3) */
+  .mat-totals {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 22px;
+  }
+  .mat-totals-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 4px 0;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .mat-totals-row.muted { color: var(--muted); font-size: 12px; font-style: italic; }
+  .mat-grand-total {
+    text-align: center;
+    padding-top: 18px;
+    margin-top: 14px;
+    border-top: 2px solid var(--green);
+  }
+  .mat-grand-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 6px;
+  }
+  .mat-grand-value {
+    font-size: 46px;
     font-weight: 700;
     color: var(--green-dk);
     line-height: 1;
     letter-spacing: -1.5px;
-    margin: 0 4px;
   }
-  .sim-period { font-size: 13px; color: var(--muted); margin-top: 6px; }
-  .sim-projections {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 22px;
+
+  /* Projection over time */
+  .projections {
+    margin-top: 22px;
+    margin-bottom: 4px;
   }
-  .sim-proj {
-    background: white;
-    border: 1px solid #BEE8D0;
-    border-radius: 8px;
-    padding: 14px 10px;
+  .projections-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
     text-align: center;
   }
-  .sim-proj.highlight {
+  .proj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+  .proj-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 8px;
+    text-align: center;
+  }
+  .proj-card.highlight {
     background: var(--green);
     border-color: var(--green);
   }
-  .sim-proj.highlight .sim-proj-label,
-  .sim-proj.highlight .sim-proj-value { color: white; }
-  .sim-proj-label {
+  .proj-card.highlight .proj-period,
+  .proj-card.highlight .proj-value { color: white; }
+  .proj-period {
     font-size: 10px;
+    font-weight: 700;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.6px;
-    font-weight: 700;
-    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
   }
-  .sim-proj-value {
-    font-size: 17px;
+  .proj-value {
+    font-size: 15px;
     font-weight: 700;
     color: var(--green-dk);
+    line-height: 1.2;
+    white-space: nowrap;
   }
+
+  /* Message + CTA */
   .sim-message {
-    background: white;
-    border: 1px dashed var(--green);
+    background: var(--green-lt);
+    border: 1px solid var(--green);
     border-radius: 8px;
-    padding: 14px 18px;
-    font-size: 13px;
+    padding: 16px 22px;
+    font-size: 14px;
     color: var(--text);
     line-height: 1.55;
-    margin-bottom: 20px;
+    margin: 22px 0 18px;
+    text-align: center;
   }
   .sim-message strong { color: var(--green-dk); }
   .sim-cta {
@@ -542,50 +833,6 @@
     line-height: 1.6;
   }
   .sim-footnote strong { color: var(--text); }
-  .sim-delivery {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 18px;
-  }
-  .sim-delivery-opt {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 14px;
-    border: 2px solid #BEE8D0;
-    border-radius: 8px;
-    background: white;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--muted);
-    transition: all 0.15s;
-    text-align: center;
-    line-height: 1.3;
-  }
-  .sim-delivery-opt:hover { border-color: var(--green); color: var(--green-dk); }
-  .sim-delivery-opt.active {
-    border-color: var(--green);
-    background: var(--green);
-    color: white;
-  }
-  .sim-delivery-opt .ico { font-size: 16px; }
-  .sim-breakdown {
-    font-size: 12px;
-    text-align: center;
-    margin-top: -8px;
-    margin-bottom: 22px;
-    line-height: 1.6;
-    padding: 10px 16px;
-    background: rgba(255,255,255,0.7);
-    border-radius: 6px;
-    color: var(--muted);
-  }
-  .sim-breakdown .freight { color: #B71C1C; font-weight: 600; }
-  .sim-breakdown .net { color: var(--green-dk); font-weight: 700; }
-  .sim-breakdown.galpao { color: var(--green-dk); font-weight: 600; }
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
@@ -598,10 +845,23 @@
     .consumer-cta, footer { padding: 40px 24px; }
     .paths-grid, .hubs-grid { grid-template-columns: 1fr; }
     .consumer-cta-inner { flex-direction: column; align-items: flex-start; }
-    .simulator-card { padding: 24px; }
-    .sim-amount { font-size: 42px; }
-    .sim-currency { font-size: 16px; margin-top: 10px; }
-    .sim-projections { grid-template-columns: 1fr; }
+    .simulator-card { padding: 24px 20px; }
+    .mat-selector { grid-template-columns: 1fr; }
+    .mat-row {
+      grid-template-columns: 1fr auto;
+      grid-template-areas: "info subtotal" "input input";
+      gap: 8px 12px;
+      padding: 12px 0;
+    }
+    .mat-info { grid-area: info; }
+    .mat-subtotal { grid-area: subtotal; align-self: start; }
+    .mat-input { grid-area: input; justify-self: start; }
+    .mat-grand-value { font-size: 36px; }
+    .proj-grid { grid-template-columns: 1fr 1fr; }
+    .mat-popover { width: auto; left: 0; right: 0; max-width: none; }
+    .mat-card[data-mat="papel"] .mat-popover { left: 0; right: 0; }
+    .mat-card[data-mat="papel"] .mat-popover::after { left: 20px; right: auto; }
+    .mat-card[data-mat="papel"] .mat-popover::before { left: 19px; right: auto; }
   }
 </style>
 </head>
@@ -750,66 +1010,184 @@
   <div class="simulator-inner">
     <div class="section-eyebrow" style="text-align:center;">Simulador de ganhos</div>
     <div class="section-title-big" style="text-align:center; margin-bottom: 8px;">Quanto suas embalagens podem render?</div>
-    <p class="simulator-desc">Ajuste o volume mensal e veja o potencial de receita ao longo do tempo. Quanto mais você acumula, mais você arrecada.</p>
+    <p class="simulator-desc">Selecione os materiais que você descarta, informe o volume e veja o potencial de receita mensal.</p>
 
     <div class="simulator-card">
-      <div class="sim-slider-wrap">
-        <div class="sim-slider-labels">
-          <span>10 kg</span>
-          <span>Volume mensal estimado</span>
-          <span>500 kg</span>
-        </div>
-        <input type="range" id="sim-volume" min="10" max="500" step="5" value="90" oninput="updateSimulator(this.value)">
-        <div class="sim-volume-display">
-          <span id="sim-volume-value">90</span> kg/mês
+
+      <div class="step">
+        <div class="step-label"><span class="step-num">1</span> Selecione os materiais que você descarta</div>
+        <p class="step-hint">Marque todos os materiais que você descarta. Clique no <strong>i</strong> ao lado de cada nome para ver exemplos.</p>
+        <div class="mat-selector">
+          <div class="mat-card selected" data-mat="filme" onclick="toggleMaterial('filme')">
+            <div class="mat-checkbox"><span class="mat-checkbox-check">✓</span></div>
+            <div class="mat-card-name">
+              Filme plástico
+              <span class="mat-card-info" onclick="showInfo(event, 'filme')">i</span>
+            </div>
+            <div class="mat-card-desc">PEBD, stretch, plástico bolha</div>
+            <div class="mat-card-price">R$ 1,00 <span class="unit">/kg</span></div>
+            <div class="mat-popover" id="pop-filme">
+              <div class="mat-popover-close" onclick="closeInfo(event, 'filme')">×</div>
+              <h4>Filme plástico</h4>
+              <div class="pop-row">
+                <span class="pop-label">Identifica</span>
+                <span class="pop-text">Material plástico fino e flexível, geralmente transparente ou colorido.</span>
+              </div>
+              <div class="pop-row">
+                <span class="pop-label">Onde encontra</span>
+                <span class="pop-text">Stretch que envolve pallets, plástico bolha de proteção, sacos plásticos, sacolas, embalagens internas de eletrônicos.</span>
+              </div>
+              <div class="pop-row">
+                <span class="pop-label">Não confundir com</span>
+                <span class="pop-text">Garrafas PET ou plásticos rígidos (outro tipo de plástico).</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mat-card" data-mat="papelao" onclick="toggleMaterial('papelao')">
+            <div class="mat-checkbox"><span class="mat-checkbox-check">✓</span></div>
+            <div class="mat-card-name">
+              Papelão
+              <span class="mat-card-info" onclick="showInfo(event, 'papelao')">i</span>
+            </div>
+            <div class="mat-card-desc">caixas, embalagens corrugadas</div>
+            <div class="mat-card-price">R$ 0,30 <span class="unit">/kg</span><span class="est">*</span></div>
+            <div class="mat-popover" id="pop-papelao">
+              <div class="mat-popover-close" onclick="closeInfo(event, 'papelao')">×</div>
+              <h4>Papelão</h4>
+              <div class="pop-row">
+                <span class="pop-label">Identifica</span>
+                <span class="pop-text">Material cartonado grosso, marrom, com ondulação por dentro (corrugado).</span>
+              </div>
+              <div class="pop-row">
+                <span class="pop-label">Onde encontra</span>
+                <span class="pop-text">Caixas de mercadoria que você recebe, caixas de eletrodomésticos, caixas de mudança.</span>
+              </div>
+              <div class="pop-row">
+                <span class="pop-label">Não confundir com</span>
+                <span class="pop-text">Papel kraft (mais fino, sem ondulação) ou papel comum.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mat-card" data-mat="papel" onclick="toggleMaterial('papel')">
+            <div class="mat-checkbox"><span class="mat-checkbox-check">✓</span></div>
+            <div class="mat-card-name">
+              Papel kraft
+              <span class="mat-card-info" onclick="showInfo(event, 'papel')">i</span>
+            </div>
+            <div class="mat-card-desc">envelopes, sacos, papel pardo</div>
+            <div class="mat-card-price">R$ 0,40 <span class="unit">/kg</span><span class="est">*</span></div>
+            <div class="mat-popover" id="pop-papel">
+              <div class="mat-popover-close" onclick="closeInfo(event, 'papel')">×</div>
+              <h4>Papel kraft</h4>
+              <div class="pop-row">
+                <span class="pop-label">Identifica</span>
+                <span class="pop-text">Papel marrom claro, resistente, sem ondulação interna.</span>
+              </div>
+              <div class="pop-row">
+                <span class="pop-label">Onde encontra</span>
+                <span class="pop-text">Envelopes pardos, sacos de pão, sacolas marrons de loja, papel de embrulho.</span>
+              </div>
+              <div class="pop-row">
+                <span class="pop-label">Não confundir com</span>
+                <span class="pop-text">Papelão (mais grosso, com ondulação interna).</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="sim-delivery">
-        <div class="sim-delivery-opt active" id="del-galpao" onclick="selectDelivery('galpao')">
-          <span class="ico">🏭</span> Entrego no galpão
-        </div>
-        <div class="sim-delivery-opt" id="del-coleta" onclick="selectDelivery('coleta')">
-          <span class="ico">🚛</span> Polen coleta
+      <div class="step">
+        <div class="step-label"><span class="step-num">2</span> Informe seu volume mensal</div>
+        <div class="mat-list">
+          <div class="mat-row" id="row-filme">
+            <div class="mat-info">
+              <div class="mat-name">Filme plástico</div>
+              <div class="mat-desc">PEBD, stretch, bolha</div>
+            </div>
+            <div class="mat-input">
+              <input type="number" id="mat-filme" min="0" max="99999" value="90" oninput="updateCalc()">
+              <span>kg/mês</span>
+            </div>
+            <div class="mat-subtotal" id="sub-filme">R$ 90,00</div>
+          </div>
+
+          <div class="mat-row hidden" id="row-papelao">
+            <div class="mat-info">
+              <div class="mat-name">Papelão</div>
+              <div class="mat-desc">caixas, embalagens</div>
+            </div>
+            <div class="mat-input">
+              <input type="number" id="mat-papelao" min="0" max="99999" value="30" oninput="updateCalc()">
+              <span>kg/mês</span>
+            </div>
+            <div class="mat-subtotal" id="sub-papelao">R$ 9,00</div>
+          </div>
+
+          <div class="mat-row hidden" id="row-papel">
+            <div class="mat-info">
+              <div class="mat-name">Papel kraft</div>
+              <div class="mat-desc">envelopes, sacos</div>
+            </div>
+            <div class="mat-input">
+              <input type="number" id="mat-papel" min="0" max="99999" value="10" oninput="updateCalc()">
+              <span>kg/mês</span>
+            </div>
+            <div class="mat-subtotal" id="sub-papel">R$ 4,00</div>
+          </div>
+
+          <div class="empty-volumes hidden" id="empty-volumes">
+            Selecione ao menos um material acima para informar o volume.
+          </div>
         </div>
       </div>
 
-      <div class="sim-main-value">
-        <div class="sim-main-label">Você arrecada por mês</div>
-        <div>
-          <span class="sim-currency">R$</span><span class="sim-amount" id="sim-monthly">90,00</span>
+      <div class="step">
+        <div class="step-label"><span class="step-num">3</span> Seu potencial de receita</div>
+        <div class="mat-totals">
+          <div class="mat-totals-row">
+            <span>Subtotal</span>
+            <span id="sub-total">R$ 90,00</span>
+          </div>
+          <div class="mat-totals-row muted">
+            <span>(−) Frete</span>
+            <span>a definir após cadastro</span>
+          </div>
+          <div class="mat-grand-total">
+            <div class="mat-grand-label">Você arrecada por mês</div>
+            <div class="mat-grand-value">R$ <span id="grand-total">90,00</span></div>
+          </div>
         </div>
-        <div class="sim-period">com 90 kg de filme plástico</div>
-      </div>
 
-      <div class="sim-breakdown galpao" id="sim-breakdown">
-        ✓ Sem frete — você recebe o valor cheio
-      </div>
-
-      <div class="sim-projections">
-        <div class="sim-proj">
-          <div class="sim-proj-label">em 3 meses</div>
-          <div class="sim-proj-value">R$ <span id="sim-3m">270,00</span></div>
-        </div>
-        <div class="sim-proj">
-          <div class="sim-proj-label">em 6 meses</div>
-          <div class="sim-proj-value">R$ <span id="sim-6m">540,00</span></div>
-        </div>
-        <div class="sim-proj highlight">
-          <div class="sim-proj-label">em 1 ano</div>
-          <div class="sim-proj-value">R$ <span id="sim-12m">1.080,00</span></div>
+        <div class="projections">
+          <div class="projections-label">🗓️ E se você guardar por mais tempo?</div>
+          <div class="proj-grid">
+            <div class="proj-card">
+              <div class="proj-period">3 meses</div>
+              <div class="proj-value">R$ <span id="proj-3m">270,00</span></div>
+            </div>
+            <div class="proj-card">
+              <div class="proj-period">6 meses</div>
+              <div class="proj-value">R$ <span id="proj-6m">540,00</span></div>
+            </div>
+            <div class="proj-card highlight">
+              <div class="proj-period">1 ano</div>
+              <div class="proj-value">R$ <span id="proj-12m">1.080,00</span></div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="sim-message">
-        💡 Acumulando <strong><span id="sim-msg-volume">90 kg</span>/mês</strong> ao longo de 1 ano, você arrecada <strong>R$ <span id="sim-msg-yearly">1.080,00</span></strong> só com o que normalmente iria pro lixo da operação.
+        💡 Se você guardar a mesma quantidade por mais um mês, terá <strong>+R$ <span id="sim-increase">90,00</span></strong> de aumento no valor arrecadado.
       </div>
 
       <button class="sim-cta" onclick="document.getElementById('cadastro').scrollIntoView({behavior:'smooth'})">
         Quero começar a vender meus resíduos →
       </button>
 
-      <p class="sim-footnote">Preço referência: <strong>R$ 1,00/kg</strong> em Porto Alegre (abril/2026) com entrega no galpão. Frete subtraído quando a Polen faz a coleta (estimativa preliminar). Tabela de preços completa por região e tipo de material será enviada após o cadastro.</p>
+      <p class="sim-footnote"><strong>*</strong> Estimativas preliminares de mercado. Tabela de preços final será enviada posteriormente. Preço referência confirmado: <strong>Porto Alegre R$ 1/kg, abril/2026</strong> — entrega no galpão.</p>
     </div>
   </div>
 </section>
@@ -990,49 +1368,70 @@
     document.getElementById('opt-compensar').className = 'path-option' + (p === 'compensar' ? ' sel-blue' : '');
   }
 
-  const PRICE_PER_KG = 1.00;      // Porto Alegre, abril/2026, entrega no galpão
-  const FREIGHT_PER_KG = 0.15;    // estimativa preliminar quando Polen faz a coleta
-  let DELIVERY = 'galpao';
+  const PRICES = {
+    filme:   1.00,  // Confirmado: Porto Alegre, abril/2026, entrega no galpão
+    papelao: 0.30,  // Estimativa preliminar de mercado
+    papel:   0.40,  // Estimativa preliminar de mercado
+  };
+  const selected = { filme: true, papelao: false, papel: false };
 
   function formatBRL(value) {
     return value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
-  function selectDelivery(d) {
-    DELIVERY = d;
-    document.getElementById('del-galpao').className = 'sim-delivery-opt' + (d === 'galpao' ? ' active' : '');
-    document.getElementById('del-coleta').className = 'sim-delivery-opt' + (d === 'coleta' ? ' active' : '');
-    updateSimulator(document.getElementById('sim-volume').value);
+  function getKg(id) {
+    return Math.max(0, Number(document.getElementById(id).value) || 0);
   }
 
-  function updateSimulator(volume) {
-    const v = Number(volume);
-    const gross = v * PRICE_PER_KG;
-    const freight = DELIVERY === 'coleta' ? v * FREIGHT_PER_KG : 0;
-    const monthly = gross - freight;
-
-    document.getElementById('sim-volume-value').textContent = v;
-    document.getElementById('sim-monthly').textContent = formatBRL(monthly);
-    document.getElementById('sim-3m').textContent = formatBRL(monthly * 3);
-    document.getElementById('sim-6m').textContent = formatBRL(monthly * 6);
-    document.getElementById('sim-12m').textContent = formatBRL(monthly * 12);
-    document.getElementById('sim-msg-volume').textContent = v + ' kg';
-    document.getElementById('sim-msg-yearly').textContent = formatBRL(monthly * 12);
-
-    const period = document.querySelector('.sim-period');
-    if (period) period.textContent = 'com ' + v + ' kg de filme plástico';
-
-    const breakdown = document.getElementById('sim-breakdown');
-    if (DELIVERY === 'coleta') {
-      breakdown.className = 'sim-breakdown';
-      breakdown.innerHTML =
-        'R$ ' + formatBRL(gross) + ' material ' +
-        '<span class="freight">− R$ ' + formatBRL(freight) + ' frete estimado</span> ' +
-        '= <span class="net">R$ ' + formatBRL(monthly) + '</span>';
-    } else {
-      breakdown.className = 'sim-breakdown galpao';
-      breakdown.innerHTML = '✓ Sem frete — você recebe o valor cheio';
+  function toggleMaterial(mat) {
+    // If popover is open on this card, clicking the card just closes it (no toggle)
+    const pop = document.getElementById('pop-' + mat);
+    if (pop && pop.classList.contains('open')) {
+      pop.classList.remove('open');
+      return;
     }
+    selected[mat] = !selected[mat];
+    document.querySelector('.mat-card[data-mat="' + mat + '"]').classList.toggle('selected', selected[mat]);
+    document.getElementById('row-' + mat).classList.toggle('hidden', !selected[mat]);
+    updateCalc();
+  }
+
+  function showInfo(event, mat) {
+    event.stopPropagation();
+    document.querySelectorAll('.mat-popover').forEach(p => p.classList.remove('open'));
+    document.getElementById('pop-' + mat).classList.add('open');
+  }
+
+  function closeInfo(event, mat) {
+    event.stopPropagation();
+    document.getElementById('pop-' + mat).classList.remove('open');
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.mat-card-info') && !e.target.closest('.mat-popover')) {
+      document.querySelectorAll('.mat-popover').forEach(p => p.classList.remove('open'));
+    }
+  });
+
+  function updateCalc() {
+    const subFilme   = selected.filme   ? getKg('mat-filme')   * PRICES.filme   : 0;
+    const subPapelao = selected.papelao ? getKg('mat-papelao') * PRICES.papelao : 0;
+    const subPapel   = selected.papel   ? getKg('mat-papel')   * PRICES.papel   : 0;
+    const total = subFilme + subPapelao + subPapel;
+
+    document.getElementById('sub-filme').textContent   = 'R$ ' + formatBRL(subFilme);
+    document.getElementById('sub-papelao').textContent = 'R$ ' + formatBRL(subPapelao);
+    document.getElementById('sub-papel').textContent   = 'R$ ' + formatBRL(subPapel);
+    document.getElementById('sub-total').textContent   = 'R$ ' + formatBRL(total);
+    document.getElementById('grand-total').textContent = formatBRL(total);
+    document.getElementById('sim-increase').textContent = formatBRL(total);
+
+    document.getElementById('proj-3m').textContent  = formatBRL(total * 3);
+    document.getElementById('proj-6m').textContent  = formatBRL(total * 6);
+    document.getElementById('proj-12m').textContent = formatBRL(total * 12);
+
+    const hasSelection = selected.filme || selected.papelao || selected.papel;
+    document.getElementById('empty-volumes').classList.toggle('hidden', hasSelection);
   }
 </script>
 
