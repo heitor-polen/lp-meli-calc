@@ -237,24 +237,46 @@
   .hubs-inner { max-width: 1100px; margin: 0 auto; }
   .section-title { font-size: 26px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
   .section-desc { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 580px; margin-bottom: 32px; }
-  .hubs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .hubs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
   .map-box {
     background: white;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
   .map-visual {
-    background: #D4E5F5;
-    min-height: 240px;
+    background: white;
+    min-height: 280px;
+    flex: 1 1 auto;
     display: flex; align-items: center; justify-content: center;
     position: relative;
+    padding: 0 20px;
+  }
+  .map-visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    margin: -14px 0;
   }
   .map-ph-content { text-align: center; }
   .map-ph-content .ico { font-size: 36px; opacity: 0.25; display: block; margin-bottom: 10px; }
   .map-ph-content p { font-size: 13px; font-weight: 700; color: var(--blue); opacity: 0.55; }
   .map-ph-content small { font-size: 11px; color: var(--muted); opacity: 0.65; display: block; margin-top: 4px; }
-  .map-footer { padding: 12px 16px; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); }
+  .map-footer {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+    min-height: 62px;
+    display: flex;
+    align-items: center;
+  }
   .hubs-list { display: flex; flex-direction: column; gap: 8px; }
   .hub-item {
     display: flex; align-items: center; gap: 10px;
@@ -1201,11 +1223,7 @@
     <div class="hubs-grid">
       <div class="map-box">
         <div class="map-visual">
-          <div class="map-ph-content">
-            <span class="ico">🗺</span>
-            <p>Mapa de operações Polen</p>
-            <small>6 cidades ativas · 4 em expansão</small>
-          </div>
+          <img src="images/mapa-polen.png" alt="Mapa de operações Polen no Brasil">
         </div>
         <div class="map-footer">
           Presença em <strong style="color:var(--green);">6 cidades</strong> — outras 4 em breve
@@ -1264,7 +1282,7 @@
           <div class="hub-dot soon"></div>
           <div class="hub-info">
             <div class="hub-city">+ 4 cidades</div>
-            <div class="hub-state">Expansão prevista para 2025</div>
+            <div class="hub-state">Expansão prevista para 2026</div>
           </div>
           <span class="hub-badge soon">Em breve</span>
         </div>
